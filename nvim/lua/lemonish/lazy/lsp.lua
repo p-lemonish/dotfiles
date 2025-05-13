@@ -206,6 +206,7 @@ return {
         formatters_by_ft = {
           lua             = { "stylua" },
           python          = { "black" },
+          markdown          = { "trim_whitespace" },
           javascript      = { "prettier" },
           javascriptreact = { "prettier" },
           typescriptreact = { "prettier" },
