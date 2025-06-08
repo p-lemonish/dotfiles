@@ -1,0 +1,67 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+confirm() {
+  read -rp "$1 [y/N]: " ans
+  case "$ans" in
+    [Yy]|[Yy][Ee][Ss]) return 0 ;;
+    *)               return 1 ;;
+  esac
+}
+
+if [[ $# -ne 1 ]]; then
+  echo "Usage: $0 <newest Go.dev tarball URL>"
+  echo "Example: $0 https://go.dev/dl/go1.24.4.src.tar.gz"
+  exit 1
+fi
+URL=$1
+
+VERSION=$(basename "$URL" | grep -oE 'go[0-9]+\.[0-9]+\.[0-9]+')
+if [[ -z "$VERSION" ]]; then
+  echo "Error: Could not parse a Go version from URL: $URL" >&2
+  exit 2
+fi
+
+if command -v go &>/dev/null; then
+  CURRENT=$(go version | awk '{print $3}')
+else
+  CURRENT="none"
+fi
+
+if [[ "$CURRENT" == "$VERSION" ]]; then
+  echo "Already running $CURRENT — nothing to download."
+  exit 0
+fi
+
+echo "Current Go: $CURRENT"
+echo "New Go:     $VERSION"
+
+if confirm "Download $VERSION?"; then
+  wget --progress=bar:force "$URL"
+else
+  echo "Aborted at download step."
+  exit 0
+fi
+TARBALL=$(basename "$URL")
+
+if confirm "Remove existing /usr/local/go?"; then
+  sudo rm -rf /usr/local/go
+else
+  echo "Skipped removal of /usr/local/go."
+fi
+
+if confirm "Extract $TARBALL to /usr/local?"; then
+  sudo tar -C /usr/local -xzf "$TARBALL"
+else
+  echo "Skipped extraction."
+  exit 0
+fi
+
+if command -v go &>/dev/null; then
+  echo "Installation complete! New version:"
+  go version
+else
+  echo "Extraction done; but 'go' not found in PATH."
+fi
+
+wget URL

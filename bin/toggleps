@@ -1,0 +1,25 @@
+#!/bin/bash
+PS1_BACKUP_FILE="$HOME/.ps1_backup"
+echo "Usage: source toggleps"
+
+save_default_ps1() {
+  echo "Saving current PS1 to $PS1_BACKUP_FILE"
+  echo "$PS1" > "$PS1_BACKUP_FILE"
+}
+
+load_default_ps1() {
+  if [ -f "$PS1_BACKUP_FILE" ]; then
+    export PS1="$(cat "$PS1_BACKUP_FILE")"
+    echo "PS1 restored to default."
+  else
+    echo "No default PS1 backup found."
+  fi
+}
+
+if [[ "$PS1" == '$ ' ]]; then
+  load_default_ps1
+else
+  save_default_ps1
+  export PS1='$ '
+  echo "PS1 set to simple dollar sign."
+fi
