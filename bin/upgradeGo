@@ -63,5 +63,3 @@ if command -v go &>/dev/null; then
 else
   echo "Extraction done; but 'go' not found in PATH."
 fi
-
-wget URL
