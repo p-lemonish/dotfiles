@@ -1,0 +1,20 @@
+# ==========================
+# EXPORTS START
+# ==========================
+
+export PATH=$PATH:/usr/local/go/bin
+
+# ==========================
+# EXPORTS END
+# ==========================
+
+# ==========================
+# ALIASES START
+# ==========================
+
+alias t="~/.local/bin/tmux-sessionizer"
+alias python="/usr/bin/python3"
+
+# ==========================
+# ALIASES END
+# ==========================
