@@ -17,7 +17,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
     end,
 })
-vim.keymap.set("n", "<leader>e", function()
+vim.keymap.set("n", "<leader>of", function()
     vim.diagnostic.open_float(nil, {
         focusable = true,
         scope = "cursor",
@@ -25,4 +25,6 @@ vim.keymap.set("n", "<leader>e", function()
     })
 end, { desc = "Show diagnostic (focusable float)" })
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+vim.keymap.set("n", "<leader>fr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+vim.keymap.set("n", "<leader>er", "oif err != nil {<CR>return err<CR>}<Esc>")
+vim.keymap.set("n", "<leader>el", "oif err != nil {<CR>log.Println(\"Error: %s\", err)<CR>}<Esc>")
