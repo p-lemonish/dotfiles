@@ -20,8 +20,8 @@ from the dotfiles -directory. The links will point toward `~/.config/tmux` and
 tmux-sessionizer has x rights.
 
 ```bash
-ln -s ~/dotfiles/nvim   ~/.config/nvim
-ln -s ~/dotfiles/tmux   ~/.config/tmux
+ln -sf ~/dotfiles/nvim   ~/.config/nvim
+ln -sf ~/dotfiles/tmux   ~/.config/tmux
 ln -sf ~/dotfiles/bin/tmux-sessionizer ~/.local/bin/tmux-sessionizer
 ln -sf ~/dotfiles/bin/toggleps ~/.local/bin/toggleps
 ln -sf ~/dotfiles/bin/upgradeGo ~/.local/bin/upgradeGo
