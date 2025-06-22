@@ -14,6 +14,9 @@ export PATH=$PATH:/usr/local/go/bin
 
 alias t="~/.local/bin/tmux-sessionizer"
 alias python="/usr/bin/python3"
+gitko() {
+  git $1 "ssh://git@git.koti.lan:2222/p-lemonish/$2"
+}
 
 # ==========================
 # ALIASES END
