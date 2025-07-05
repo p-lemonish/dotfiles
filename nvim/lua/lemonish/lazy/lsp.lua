@@ -4,7 +4,6 @@ return {
     "stevearc/conform.nvim",
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
-    "mfussenegger/nvim-jdtls",
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
@@ -13,19 +12,18 @@ return {
     "L3MON4D3/LuaSnip",
     "j-hui/fidget.nvim",
     {
-    "hrsh7th/nvim-cmp",
-      config = function ()
-        require'cmp'.setup {
-        snippet = {
-          expand = function(args)
-            require'luasnip'.lsp_expand(args.body)
-          end
-        },
-
-        sources = {
-          { name = 'luasnip' },
-        },
-      }
+      "hrsh7th/nvim-cmp",
+      config = function()
+        require 'cmp'.setup {
+          snippet = {
+            expand = function(args)
+              require 'luasnip'.lsp_expand(args.body)
+            end
+          },
+          sources = {
+            { name = 'luasnip' },
+          },
+        }
       end
     },
   },
@@ -51,35 +49,42 @@ return {
       end,
     })
 
-    local has_words_before = function()
-      local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-      return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-    end
-
     cmp.setup({
       snippet = {
         expand = function(args)
-          luasnip.lsp_expand(args.body) -- For `luasnip` users.
+          luasnip.lsp_expand(args.body)
         end,
       },
 
       mapping = cmp.mapping.preset.insert({
-        ['<CR>'] = cmp.mapping.confirm({ select = true }),
-        ["<Tab>"] = cmp.mapping(function()
+        ['<CR>'] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+            if luasnip.expandable() then
+              luasnip.expand()
+            else
+              cmp.confirm({
+                select = true,
+              })
+            end
+          else
+            fallback()
+          end
+        end),
+
+        ["<Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_next_item()
-          elseif luasnip.expand_or_jumpable() then
-            luasnip.expand_or_jump()
-          elseif has_words_before() then
-            cmp.complete()
+          elseif luasnip.locally_jumpable(1) then
+            luasnip.jump(1)
           else
-            vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Tab>", true, false, true), "n", true)
+            fallback()
           end
         end, { "i", "s" }),
+
         ["<S-Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_prev_item()
-          elseif luasnip.jumpable(-1) then
+          elseif luasnip.locally_jumpable(-1) then
             luasnip.jump(-1)
           else
             fallback()
@@ -88,9 +93,8 @@ return {
       }),
 
       sources = cmp.config.sources({
-        { name = "copilot", group_index = 2 },
         { name = 'nvim_lsp' },
-        { name = 'luasnip' }, -- For luasnip users.
+        { name = 'luasnip' },
       }, {
         { name = 'buffer' },
       })
@@ -111,16 +115,12 @@ return {
     require("mason").setup()
     require("mason-lspconfig").setup({
       ensure_installed = {
-        "ruby_lsp", -- must do apt install gem and apt install ruby-dev, then do gem install ruby-lsp.
+        --"ruby_lsp", -- must do apt install gem and apt install ruby-dev, then do gem install ruby-lsp.
         "lua_ls",
-        "dockerls",
         "clangd",
         "rust_analyzer",
-        "nginx_language_server",
         "terraformls",
         "ts_ls",
-        "html",
-        "pyright",
         "gopls",
       },
       handlers = {
@@ -129,94 +129,13 @@ return {
             capabilities = capabilities
           }
         end,
-
-        ["lua_ls"] = function()
-          local lspconfig = require("lspconfig")
-          lspconfig.lua_ls.setup {
-            capabilities = capabilities,
-            settings = {
-              Lua = {
-                runtime = { version = "Lua 5.2" },
-                diagnostics = {
-                  globals = { "bit", "vim", "it", "describe", "before_each", "after_each" },
-                }
-              }
-            }
-          }
-        end,
-
-        ["terraformls"] = function()
-          local lspconfig = require("lspconfig")
-          lspconfig.terraformls.setup({
-            capabilities = capabilities,
-          })
-        end,
-
-        ["ruby_lsp"] = function()
-          local lspconfig = require("lspconfig")
-          lspconfig.ruby_lsp.setup({
-            capabilities = capabilities,
-          })
-        end,
-
-        -- Java LSP setup
-        ["jdtls"] = function()
-          local lspconfig = require("lspconfig")
-          lspconfig.jdtls.setup({
-            capabilities = capabilities,
-          })
-        end,
-
-        -- JavaScript/TypeScript LSP setup
-        ["ts_ls"] = function()
-          local lspconfig = require("lspconfig")
-          lspconfig.ts_ls.setup({
-            capabilities = capabilities,
-            settings = {
-              javascript = {
-                format = {
-                  semicolons = "insert"
-                }
-              },
-              typescript = {
-                format = {
-                  semicolons = "insert"
-                }
-              }
-            }
-          })
-        end,
-
-        -- HTML LSP setup
-        ["html"] = function()
-          local lspconfig = require("lspconfig")
-          lspconfig.html.setup({
-            capabilities = capabilities
-          })
-        end,
-
-        -- Python LSP setup
-        ["pyright"] = function()
-          local lspconfig = require("lspconfig")
-          lspconfig.pyright.setup({
-            capabilities = capabilities,
-            settings = {
-              python = {
-                analysis = {
-                  typeCheckingMode = "strict",
-                  autoImportCompletions = true,
-                }
-              }
-            }
-          })
-        end,
-
       },
+
       require("conform").setup({
         formatters_by_ft = {
           lua             = { "stylua" },
           python          = { "black" },
-          markdown          = { "trim_whitespace" },
+          markdown        = { "trim_whitespace" },
           javascript      = { "prettier" },
           javascriptreact = { "prettier" },
           typescriptreact = { "prettier" },
