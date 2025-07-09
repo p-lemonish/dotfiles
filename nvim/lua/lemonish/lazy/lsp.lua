@@ -117,6 +117,7 @@ return {
       ensure_installed = {
         --"ruby_lsp", -- must do apt install gem and apt install ruby-dev, then do gem install ruby-lsp.
         "lua_ls",
+        "pyright",
         "clangd",
         "rust_analyzer",
         "terraformls",
