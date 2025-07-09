@@ -2,7 +2,9 @@
 # EXPORTS START
 # ==========================
 
+export EDITOR=nvim
 export PATH=$PATH:/usr/local/go/bin
+export PATH="$HOME/.local/nvim/bin:$PATH"
 
 # ==========================
 # EXPORTS END
@@ -17,6 +19,16 @@ alias python="/usr/bin/python3"
 gitko() {
   git $1 "ssh://git@git.koti.lan:2222/p-lemonish/$2"
 }
+alias f='cd "$(fd --type d -I \
+  --exclude node_modules \
+  --exclude Android \
+  --exclude pt \
+  --exclude go \
+  --exclude snap \
+  "" \
+  ~/dotfiles \
+  ~/Documents/project \
+  | fzf)"'
 
 # ==========================
 # ALIASES END
