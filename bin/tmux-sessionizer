@@ -3,13 +3,17 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find \
-      ~/dotfiles \
-      /srv \
-      ~/Documents \
-      ~/Documents/project/wip \
-      ~/Documents/project/abandoned \
-        -mindepth 1 -maxdepth 5 \( -type d \( -name .git -o -name node_modules \) -prune \) -o -print | fzf)
+    selected=$(fd --absolute-path --type d -I \
+    --exclude node_modules \
+    --exclude Android \
+    --exclude pt \
+    --exclude go \
+    --exclude snap \
+    --show-errors \
+    "" \
+    ~/dotfiles \
+    ~/Documents/project \
+    | fzf --select-1 --exit-0)
 fi
 
 if [[ -z $selected ]]; then
@@ -24,8 +28,8 @@ if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
     exit 0
 fi
 
-if ! tmux has-session -t=$selected_name 2> /dev/null; then
-    tmux new-session -ds $selected_name -c $selected
+if ! tmux has-window -t=$selected_name 2> /dev/null; then
+    tmux new-window -c $selected
 fi
 
 tmux switch-client -t $selected_name
