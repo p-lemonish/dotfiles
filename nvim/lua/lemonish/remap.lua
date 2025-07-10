@@ -45,8 +45,13 @@ vim.keymap.set("n", "}", "}zz")
 vim.keymap.set("n", ";", "<C-i>zz", { silent = true })
 vim.keymap.set("n", ",", "<C-o>zz", { silent = true })
 
--- Go related fake snippets
+-- find&replace
 vim.keymap.set("n", "<leader>fr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+
+-- find&replace in selection
+vim.keymap.set("v", "<leader>fr", [[<Esc>:'<,'>s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+
+-- Go related fake snippets
 vim.keymap.set("n", "<leader>er", "oif err != nil {<CR>return err<CR>}<Esc>")
 vim.keymap.set("n", "<leader>el", "oif err != nil {<CR>log.Println(\"Error: %s\", err)<CR>}<Esc>")
 
