@@ -1,4 +1,17 @@
 # ==========================
+# ANDROID SDK ENVS START
+# ==========================
+
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:$ANDROID_HOME/tools
+
+# ==========================
+# ANDROID SDK ENVS END
+# ==========================
+
+# ==========================
 # EXPORTS START
 # ==========================
 
@@ -9,6 +22,19 @@ export PATH="$HOME/.local/nvim/bin:$PATH"
 # ==========================
 # EXPORTS END
 # ==========================
+#
+# Other:
+# gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-1 "['<Control>1']"
+# gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-2 "['<Control>2']"
+# gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-3 "['<Control>3']"
+# gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-4 "['<Control>4']"
+# gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-1 "['<Shift><Control>1']"
+# gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-2 "['<Shift><Control>2']"
+# gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-3 "['<Shift><Control>3']"
+# gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-4 "['<Shift><Control>4']"
+# for traveling workspaces
+#
+#
 
 # ==========================
 # ALIASES START
@@ -16,6 +42,7 @@ export PATH="$HOME/.local/nvim/bin:$PATH"
 
 alias t="~/.local/bin/tmux-sessionizer"
 alias python="/usr/bin/python3"
+alias vim=nvim
 gitko() {
   git $1 "ssh://git@git.koti.lan:2222/p-lemonish/$2"
 }
@@ -28,8 +55,11 @@ alias f='cd "$(fd --type d -I \
   "" \
   ~/dotfiles \
   ~/Documents/project \
+  ~/Documents/koulu \
   | fzf)"'
 
 # ==========================
 # ALIASES END
 # ==========================
+
+
