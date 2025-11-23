@@ -42,6 +42,7 @@ Short steps to updating Neovim to a newer version
 
 Add these into `.bashrc/.zshrc` if not there already
 ```bash
+# check zshrcsnip for all
 export PATH="$HOME/.local/nvim/bin:$PATH"
 alias vim=nvim
 ```
