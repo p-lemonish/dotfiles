@@ -10,8 +10,9 @@ confirm() {
 }
 
 if [[ $# -ne 1 ]]; then
-  echo "Usage: $0 <newest Go.dev tarball URL>"
-  echo "Example: $0 https://go.dev/dl/go1.24.4.src.tar.gz"
+  echo "Usage: $0 <newest Go.dev binary tarball URL>"
+  echo "Example: $0 https://go.dev/dl/go1.25.4.linux-amd64.tar.gz"
+  echo "Go to: https://go.dev/dl/ and grab the newest pre-built binary URL (don't use src)"
   exit 1
 fi
 URL=$1
