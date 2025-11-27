@@ -24,7 +24,7 @@ ln -sf ~/dotfiles/nvim   ~/.config/nvim
 ln -sf ~/dotfiles/tmux   ~/.config/tmux
 ln -sf ~/dotfiles/bin/tmux-sessionizer ~/.local/bin/tmux-sessionizer
 ln -sf ~/dotfiles/bin/toggleps ~/.local/bin/toggleps
-ln -sf ~/dotfiles/bin/upgradeGo ~/.local/bin/upgradeGo
+ln -sf ~/dotfiles/bin/updateGo ~/.local/bin/updateGo
 ```
 
 Open tmux and run `<C-a> I` to install plugins.
