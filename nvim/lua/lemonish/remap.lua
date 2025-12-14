@@ -63,3 +63,23 @@ vim.keymap.set({ "n", "x" }, "<leader>ri", ":Refactor inline_var")
 vim.keymap.set("n", "<leader>rI", ":Refactor inline_func")
 vim.keymap.set("n", "<leader>rb", ":Refactor extract_block")
 vim.keymap.set("n", "<leader>rbf", ":Refactor extract_block_to_file")
+
+-- exec py, go, or sh in a small split window with C-e
+vim.keymap.set("n", "<C-e>", function()
+  local ft = vim.bo.filetype
+  local file = vim.fn.expand("%:p")
+  local cmd
+  if ft == "python" then
+    cmd = "python3 " .. vim.fn.shellescape(file)
+  elseif ft == "go" then
+    cmd = "go run ."
+  elseif ft == "sh" or ft == "bash" then
+    cmd = "bash " .. vim.fn.shellescape(file)
+  else
+    return -- unknown type: don't run anything
+  end
+  vim.cmd("botright split | resize 12 | terminal")
+  local job = vim.b.terminal_job_id
+  vim.api.nvim_chan_send(job, cmd .. "\n")
+end, { desc = "Run current file (py/sh) or go run ." })
+
