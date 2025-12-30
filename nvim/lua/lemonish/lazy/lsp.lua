@@ -117,7 +117,8 @@ return {
       ensure_installed = {
         --"ruby_lsp", -- must do apt install gem and apt install ruby-dev, then do gem install ruby-lsp.
         "lua_ls",
-        "pyright",
+        "basedpyright",
+        "ruff",
         "clangd",
         "rust_analyzer",
         "terraformls",
@@ -135,7 +136,7 @@ return {
       require("conform").setup({
         formatters_by_ft = {
           lua             = { "stylua" },
-          python          = { "black" },
+          python          = { "ruff_format" },
           markdown        = { "trim_whitespace" },
           javascript      = { "prettier" },
           javascriptreact = { "prettier" },
