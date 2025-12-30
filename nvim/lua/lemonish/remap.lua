@@ -69,15 +69,28 @@ vim.keymap.set("n", "<C-e>", function()
   local ft = vim.bo.filetype
   local file = vim.fn.expand("%:p")
   local cmd
+
   if ft == "python" then
-    cmd = "python3 " .. vim.fn.shellescape(file)
+    -- Find project root by looking for .git directory
+    local root = vim.fn.finddir(".git", file .. ";")
+    if root ~= "" then
+      root = vim.fn.fnamemodify(root, ":h")
+      -- Make file path relative to git root
+      local rel_file = vim.fn.substitute(file, "^" .. vim.fn.escape(root, "/") .. "/", "", "")
+      cmd = "cd " .. vim.fn.shellescape(root) .. " && PYTHONPATH=. python3 " .. vim.fn.shellescape(rel_file)
+    else
+      -- No git root found, just run from current location
+      cmd = "python3 " .. vim.fn.shellescape(file)
+    end
+
   elseif ft == "go" then
     cmd = "go run ."
   elseif ft == "sh" or ft == "bash" then
     cmd = "bash " .. vim.fn.shellescape(file)
   else
-    return -- unknown type: don't run anything
+    return
   end
+
   vim.cmd("botright split | resize 12 | terminal")
   local job = vim.b.terminal_job_id
   vim.api.nvim_chan_send(job, cmd .. "\n")
