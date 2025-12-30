@@ -65,8 +65,8 @@ alias f='cd "$(fd --type d -I \
   ~/ctfs \
   ~/apphacking \
   ~/disobey \
-
   | fzf)"'
+alias oc=opencode
 
 # ==========================
 # ALIASES END
