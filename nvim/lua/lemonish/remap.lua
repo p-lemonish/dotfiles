@@ -20,6 +20,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
     vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
     vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename)
+    vim.bo[args.buf].formatexpr = ""
   end,
 })
 vim.keymap.set("n", "<leader>of", function()
