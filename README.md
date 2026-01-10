@@ -10,10 +10,6 @@ be cloned.
 git clone https://github.com/tmux-plugins/tpm ~/dotfiles/tmux/plugins/tpm
 ```
 
-I've downloaded the tmux-sessionizer -script from ThePrimeagen from [here](https://github.com/ThePrimeagen/.dotfiles/blob/master/bin/.local/scripts/tmux-sessionizer)
-and edited the directory structure and find depth to a way that suits me
-and my environment best currently.
-
 Once `tpm` is cloned you should next run the following commands to setup symlinks
 from the dotfiles -directory. The links will point toward `~/.config/tmux` and
 `~/.config/nvim`, and that's where they should typically be at. Also make sure
@@ -22,7 +18,6 @@ tmux-sessionizer has x rights.
 ```bash
 ln -sf ~/dotfiles/nvim   ~/.config/nvim
 ln -sf ~/dotfiles/tmux   ~/.config/tmux
-ln -sf ~/dotfiles/bin/tmux-sessionizer ~/.local/bin/tmux-sessionizer
 ln -sf ~/dotfiles/bin/toggleps ~/.local/bin/toggleps
 ln -sf ~/dotfiles/bin/updateGo ~/.local/bin/updateGo
 ```
@@ -39,10 +34,3 @@ Short steps to updating Neovim to a newer version
 3. untar -> tar xvzf nvimtarball
 4. mkdir -p ~/.local/nvim
 5. cp -r nvimtarball/* ~/.local/nvim
-
-Add these into `.bashrc/.zshrc` if not there already
-```bash
-# check zshrcsnip for all
-export PATH="$HOME/.local/nvim/bin:$PATH"
-alias vim=nvim
-```
