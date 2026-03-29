@@ -18,6 +18,7 @@ tmux-sessionizer has x rights.
 ```bash
 ln -sf ~/dotfiles/nvim   ~/.config/nvim
 ln -sf ~/dotfiles/tmux   ~/.config/tmux
+ln -sf ~/dotfiles/zshrc   ~/.zshrc
 ln -sf ~/dotfiles/bin/toggleps ~/.local/bin/toggleps
 ln -sf ~/dotfiles/bin/updateGo ~/.local/bin/updateGo
 ```
