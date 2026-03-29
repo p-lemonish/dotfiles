@@ -12,8 +12,12 @@ git clone https://github.com/tmux-plugins/tpm ~/dotfiles/tmux/plugins/tpm
 
 Once `tpm` is cloned you should next run the following commands to setup symlinks
 from the dotfiles -directory. The links will point toward `~/.config/tmux` and
-`~/.config/nvim`, and that's where they should typically be at. Also make sure
-tmux-sessionizer has x rights.
+`~/.config/nvim`, and that's where they should typically be at.
+
+```bash
+mkdir -p ~/.oh-my-zsh/custom/theme/
+cp ~/dotfiles/.oh-my-zsh/custom/themes/lemonish.zsh-theme ~/.oh-my-zsh/custom/themes/lemonish.zsh-theme
+```
 
 ```bash
 ln -sf ~/dotfiles/nvim   ~/.config/nvim
