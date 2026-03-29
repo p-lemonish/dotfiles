@@ -21,7 +21,7 @@ PROMPT='%(?..%{$fg_bold[red]%}exit %?
 %{$reset_color%})'\
 '%{$bold_color%}$(git_prompt_status)%{$reset_color%}'\
 '$(git_prompt_info)'\
-'%{$fg[$user_color]%}%~%{$reset_color%}'\
+'%{$fg[$user_color]%}$(shrink_path -f)%{$reset_color%}'\
 ' %(!.#.$) '
 
 PROMPT2='%{$fg[red]%}\ %{$reset_color%}'
