@@ -32,6 +32,13 @@ Open tmux and run `<C-a> I` to install plugins.
 And that's it! Fastest way to find out if everything works is to open up tmux and nvim
 and do C-f and see if it works by bringing up the find menu with tmux-sessionizer.
 
+## Bonus for Kali
+- Add another binding, otherwise C-h won't work (because kali for some reason
+has it bound as backspace)
+```
+bind BSpace select-pane -L
+```
+
 ## Updating Neovim
 Short steps to updating Neovim to a newer version
 1. https://github.com/neovim/neovim/releases/latest
