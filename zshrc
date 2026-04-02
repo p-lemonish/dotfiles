@@ -41,7 +41,7 @@ alias f='cd "$(fd --type d -I \
   ~/Documents/koulu \
   | fzf)"'
 alias oc=opencode
-alias thetime='date +"%Y-%m-%d w%V %H:%M:%S"'
+alias thetime='date +"%Y-%m-%d_w%V_%H:%M:%S"'
 alias theweek='date +"w%V"'
 
 # ==========================
