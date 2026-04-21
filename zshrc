@@ -77,3 +77,4 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 
+export PATH="$HOME/.local/share/gem/ruby/3.2.0/bin:$PATH"
