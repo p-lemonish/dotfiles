@@ -3,6 +3,7 @@
 # ==========================
 
 export EDITOR=nvim
+export VISUAL=nvim
 export PATH=$PATH:/usr/local/go/bin
 export PATH="$HOME/.local/nvim/bin:$PATH"
 export PATH="$HOME/.opencode/bin:$PATH"
@@ -44,6 +45,12 @@ alias oc=opencode
 alias thetime='date +"%Y-%m-%d_w%V_%H:%M:%S"'
 alias theweek='date +"w%V"'
 
+open_alacritty() {
+  alacritty >/dev/null 2>&1 &!
+}
+zle -N open_alacritty
+bindkey '^g' open_alacritty
+
 # ==========================
 # ALIASES END
 # ==========================
@@ -78,3 +85,9 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 
 export PATH="$HOME/.local/share/gem/ruby/3.2.0/bin:$PATH"
+
+. "$HOME/.local/bin/env"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

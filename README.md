@@ -23,8 +23,7 @@ cp ~/dotfiles/.oh-my-zsh/custom/themes/lemonish.zsh-theme ~/.oh-my-zsh/custom/th
 ln -sf ~/dotfiles/nvim   ~/.config/nvim
 ln -sf ~/dotfiles/tmux   ~/.config/tmux
 ln -sf ~/dotfiles/zshrc   ~/.zshrc
-ln -sf ~/dotfiles/bin/toggleps ~/.local/bin/toggleps
-ln -sf ~/dotfiles/bin/updateGo ~/.local/bin/updateGo
+ln -sf ~/dotfiles/alacritty   ~/.config/alacritty
 ```
 
 Open tmux and run `<C-a> I` to install plugins.
@@ -46,3 +45,5 @@ Short steps to updating Neovim to a newer version
 3. untar -> tar xvzf nvimtarball
 4. mkdir -p ~/.local/nvim
 5. cp -r nvimtarball/* ~/.local/nvim
+6. sudo ln -sf ~/.local/nvim/bin/nvim /usr/local/bin/nvim
+7. sudo ln -sf ~/.local/nvim/bin/nvim /usr/local/bin/vim
