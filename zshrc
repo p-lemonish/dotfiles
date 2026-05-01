@@ -45,12 +45,6 @@ alias oc=opencode
 alias thetime='date +"%Y-%m-%d_w%V_%H:%M:%S"'
 alias theweek='date +"w%V"'
 
-open_alacritty() {
-  alacritty >/dev/null 2>&1 &!
-}
-zle -N open_alacritty
-bindkey '^g' open_alacritty
-
 # ==========================
 # ALIASES END
 # ==========================

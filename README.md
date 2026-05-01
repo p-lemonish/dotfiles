@@ -24,6 +24,7 @@ ln -sf ~/dotfiles/nvim   ~/.config/nvim
 ln -sf ~/dotfiles/tmux   ~/.config/tmux
 ln -sf ~/dotfiles/zshrc   ~/.zshrc
 ln -sf ~/dotfiles/alacritty   ~/.config/alacritty
+ln -sf ~/dotfiles/bin/term   ~/.local/bin/term
 ```
 
 Open tmux and run `<C-a> I` to install plugins.

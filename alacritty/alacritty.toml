@@ -9,5 +9,4 @@ dynamic_title = true
 size = 11.0
 
 [terminal.shell]
-program = "/usr/bin/tmux"
-args = ["new-session", "-A", "-s", "main"]
+program = "~/.local/bin/term"

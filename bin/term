@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+exec alacritty -e tmux new-session -s "term-$(date +%d%m%Y-%H%M%S)"
