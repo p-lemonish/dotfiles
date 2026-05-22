@@ -44,6 +44,8 @@ alias f='cd "$(fd --type d -I \
 alias oc=opencode
 alias thetime='date +"%Y-%m-%d_w%V_%H:%M:%S"'
 alias theweek='date +"w%V"'
+alias binja="$HOME/Documents/binja/binaryninja/binaryninja > /dev/null 2>&1 & disown"
+
 
 # ==========================
 # ALIASES END
