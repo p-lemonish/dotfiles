@@ -72,18 +72,7 @@ vim.keymap.set("n", "<C-e>", function()
   local cmd
 
   if ft == "python" then
-    -- Find project root by looking for .git directory
-    local root = vim.fn.finddir(".git", file .. ";")
-    if root ~= "" then
-      root = vim.fn.fnamemodify(root, ":h")
-      -- Make file path relative to git root
-      local rel_file = vim.fn.substitute(file, "^" .. vim.fn.escape(root, "/") .. "/", "", "")
-      cmd = "cd " .. vim.fn.shellescape(root) .. " && PYTHONPATH=. python3 " .. vim.fn.shellescape(rel_file)
-    else
-      -- No git root found, just run from current location
-      cmd = "python3 " .. vim.fn.shellescape(file)
-    end
-
+    cmd = "uv run " .. vim.fn.shellescape(file)
   elseif ft == "go" then
     cmd = "go run ."
   elseif ft == "sh" or ft == "bash" then
@@ -96,4 +85,3 @@ vim.keymap.set("n", "<C-e>", function()
   local job = vim.b.terminal_job_id
   vim.api.nvim_chan_send(job, cmd .. "\n")
 end, { desc = "Run current file (py/sh) or go run ." })
-
