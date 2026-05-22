@@ -170,24 +170,13 @@ return {
       settings = {
         basedpyright = {
           analysis = {
-            typeCheckingMode = "off",
+            typeCheckingMode = "basic",
             diagnosticMode = "openFilesOnly",
             diagnosticSeverityOverrides = {
-              reportAny = "none",
-              reportExplicitAny = "none",
-              reportUnknownMemberType = "none",
-              reportUnknownVariableType = "none",
-              reportUnknownLambdaType = "none",
-              reportMissingTypeStubs = "none",
-              reportUnknownParameterType = "none",
-              reportUnknownArgumentType = "none",
+              reportWildcardImportFromLibrary = "none",
               reportUnusedImport = "none",
               reportUnusedVariable = "none",
-              reportUnusedFunction = "none",
-              reportWildcardImportFromLibrary = "none",
-              reportUndefinedVariable = "warning",
-              reportPossiblyUnboundVariable = "warning",
-              reportUnboundVariable = "warning",
+              reportUnusedFunction = "warning",
             },
           },
         },
@@ -201,11 +190,9 @@ return {
           lint = {
             select = { "E", "F", "I", "UP", "B" },
             ignore = {
-              "E501",
-              "F401",
               "F403",
+              "E501",
               "F405",
-              "F841",
               "I001",
             },
           },
