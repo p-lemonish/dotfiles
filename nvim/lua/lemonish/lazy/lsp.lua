@@ -185,7 +185,7 @@ return {
               reportUnusedVariable = "none",
               reportUnusedFunction = "none",
               reportWildcardImportFromLibrary = "none",
-              reportUndefinedVariable = "none",
+              reportUndefinedVariable = "warning",
               reportPossiblyUnboundVariable = "warning",
               reportUnboundVariable = "warning",
             },
