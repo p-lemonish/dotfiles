@@ -5,6 +5,7 @@
 export EDITOR=nvim
 export VISUAL=nvim
 export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:/usr/sbin
 export PATH="$HOME/.local/nvim/bin:$PATH"
 export PATH="$HOME/.opencode/bin:$PATH"
 export PATH="$PATH:$(go env GOPATH)/bin"
