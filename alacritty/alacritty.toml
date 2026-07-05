@@ -9,7 +9,7 @@ dynamic_title = true
 size = 12.0
 
 [terminal.shell]
-program = "~/.local/bin/term"
+program = "/usr/bin/zsh"
 
 [[hints.enabled]]
 binding = { key = "U", mods = "Control|Shift" }
