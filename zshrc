@@ -46,7 +46,9 @@ alias oc=opencode
 alias thetime='date +"%Y-%m-%d_w%V_%H:%M:%S"'
 alias theweek='date +"w%V"'
 alias binja="$HOME/Documents/binja/binaryninja/binaryninja > /dev/null 2>&1 & disown"
-
+alias vlist='virsh -c qemu:///system list --all'
+alias vstart='virsh -c qemu:///system start'
+alias vsave='virsh -c qemu:///system managedsave'
 
 # ==========================
 # ALIASES END
@@ -72,6 +74,9 @@ setopt prompt_subst
 
 export PATH=/usr/local/cuda/bin:$PATH
 export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+
+# fzf default key bindings
+[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ] && source /usr/share/doc/fzf/examples/key-bindings.zsh
 
 # bun completions
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
