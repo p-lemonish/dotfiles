@@ -9,21 +9,12 @@ export PATH=$PATH:/usr/sbin
 export PATH="$HOME/.local/nvim/bin:$PATH"
 export PATH="$HOME/.opencode/bin:$PATH"
 export PATH="$PATH:$(go env GOPATH)/bin"
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.dotnet/tools:$PATH"
 
 # ==========================
 # EXPORTS END
 # ==========================
-#
-# Other:
-# gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-1 "['<Control>1']"
-# gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-2 "['<Control>2']"
-# gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-3 "['<Control>3']"
-# gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-4 "['<Control>4']"
-# gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-1 "['<Shift><Control>1']"
-# gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-2 "['<Shift><Control>2']"
-# gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-3 "['<Shift><Control>3']"
-# gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-4 "['<Shift><Control>4']"
-# for traveling workspaces
 #
 # ==========================
 # ALIASES START
