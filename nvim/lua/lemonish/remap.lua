@@ -65,7 +65,7 @@ vim.keymap.set("n", "<leader>rI", ":Refactor inline_func")
 vim.keymap.set("n", "<leader>rb", ":Refactor extract_block")
 vim.keymap.set("n", "<leader>rbf", ":Refactor extract_block_to_file")
 
--- exec py, go, or sh in a small split window with C-e
+-- exec js, py, go, or sh in a small split window with C-e
 vim.keymap.set("n", "<C-e>", function()
   local ft = vim.bo.filetype
   local file = vim.fn.expand("%:p")
@@ -75,6 +75,8 @@ vim.keymap.set("n", "<C-e>", function()
     cmd = "uv run " .. vim.fn.shellescape(file)
   elseif ft == "go" then
     cmd = "go run ."
+  elseif ft == "javascript" or ft == "typescript" then
+    cmd = "bun " .. vim.fn.shellescape(file)
   elseif ft == "sh" or ft == "bash" then
     cmd = "bash " .. vim.fn.shellescape(file)
   else
