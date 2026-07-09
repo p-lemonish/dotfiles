@@ -39,8 +39,12 @@ alias f='cd "$(fd --type d -I \
   --exclude snap \
   "" \
   ~/dotfiles \
+  ~/ctfs \
+  ~/htb \
+  ~/Documents/proggis \
   ~/Documents/project \
-  ~/Documents/koulu \
+  ~/Documents/notes \
+  2>/dev/null \
   | fzf)"'
 alias oc=opencode
 alias thetime='date +"%Y-%m-%d_w%V_%H:%M:%S"'
