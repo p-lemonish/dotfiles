@@ -107,3 +107,8 @@ npx() {
   [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
   npx "$@"
 }
+
+# use emacs style movement in zsh
+bindkey -e
+# disable esc+l -> ls because of problems
+bindkey -M emacs -r '^[l'
