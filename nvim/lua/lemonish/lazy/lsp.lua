@@ -170,7 +170,7 @@ return {
       settings = {
         basedpyright = {
           analysis = {
-            typeCheckingMode = "basic",
+            typeCheckingMode = "off",
             diagnosticMode = "openFilesOnly",
             diagnosticSeverityOverrides = {
               reportWildcardImportFromLibrary = "none",
