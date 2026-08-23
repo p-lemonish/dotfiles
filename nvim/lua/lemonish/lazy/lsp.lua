@@ -141,6 +141,7 @@ return {
       "terraformls",
       "ts_ls",
       "gopls",
+      "roslyn_ls",
     }
 
     for _, server in ipairs(servers) do
@@ -148,6 +149,13 @@ return {
         capabilities = capabilities,
       })
     end
+    vim.lsp.config("roslyn_ls", {
+      capabilities = capabilities,
+      cmd = {
+        "roslyn-language-server",
+        "--stdio",
+      },
+    })
 
     -- Lua / Neovim config
     vim.lsp.config("lua_ls", {
