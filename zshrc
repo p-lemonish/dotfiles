@@ -11,6 +11,8 @@ export PATH="$HOME/.opencode/bin:$PATH"
 export PATH="$PATH:$(go env GOPATH)/bin"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.dotnet/tools:$PATH"
+export DOTNET_ROOT="$HOME/.dotnet"
+export PATH="$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools"
 
 # ==========================
 # EXPORTS END
