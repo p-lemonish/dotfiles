@@ -156,6 +156,13 @@ return {
         "--stdio",
       },
     })
+    vim.lsp.config("clangd", {
+      capabilities = capabilities,
+      cmd = {
+        "clangd",
+        "--query-driver=/usr/bin/*-w64-mingw32-*",
+      },
+    })
 
     -- Lua / Neovim config
     vim.lsp.config("lua_ls", {
