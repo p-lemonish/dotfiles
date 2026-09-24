@@ -114,3 +114,11 @@ npx() {
 bindkey -e
 # disable esc+l -> ls because of problems
 bindkey -M emacs -r '^[l'
+
+if [[ -r "$HOME/.atuin/bin/env" ]]; then
+  source "$HOME/.atuin/bin/env"
+fi
+
+if (( $+commands[atuin] )); then
+  eval "$(atuin init zsh --disable-up-arrow --disable-ai)"
+fi
